@@ -22,11 +22,11 @@ public class UserDAO {
             pstm.setString(2, userDTO.getPassword_user());
             
             ResultSet rs = pstm.executeQuery();
-            return rs;
+            return rs; 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + e.getMessage());
             return null;
-        }
+        } 
     }
 
 }

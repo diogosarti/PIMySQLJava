@@ -29,8 +29,8 @@ public class frmLoginVIEW extends javax.swing.JFrame {
         fulndo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Dashboard");
-        setMinimumSize(new java.awt.Dimension(960, 540));
+        setTitle("Login");
+        setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -70,6 +70,11 @@ public class frmLoginVIEW extends javax.swing.JFrame {
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
         jPanel1.add(txtPassword);
@@ -171,6 +176,12 @@ public class frmLoginVIEW extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEntarKeyPressed
 
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            verificacao();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -199,10 +210,8 @@ public class frmLoginVIEW extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmLoginVIEW().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmLoginVIEW().setVisible(true);
         });
     }
 
