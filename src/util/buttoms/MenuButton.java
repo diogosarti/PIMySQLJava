@@ -1,4 +1,4 @@
-package util.rsbuttom;
+package util.buttoms;
 
 import java.awt.Color;
 import java.awt.Cursor;

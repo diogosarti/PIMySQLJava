@@ -10,13 +10,14 @@ import javax.swing.JOptionPane;
 public class UserDAO {
 
     Connection conn;
+    PreparedStatement pstm;
 
     public ResultSet authUser(UserDTO userDTO) {
         conn = new ConexaoDAO().conectaDB();
 
         try {
             String sql = "select * from user where email_user = ? and password_user = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm = conn.prepareStatement(sql);
             
             pstm.setString(1, userDTO.getEmail_user());
             pstm.setString(2, userDTO.getPassword_user());

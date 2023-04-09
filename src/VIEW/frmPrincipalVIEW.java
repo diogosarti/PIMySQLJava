@@ -25,10 +25,10 @@ public class frmPrincipalVIEW extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        MenuButtonInicio = new util.rsbuttom.MenuButton();
-        MenuButtonVenda = new util.rsbuttom.MenuButton();
-        MenuButtonProduto = new util.rsbuttom.MenuButton();
-        MenuButtonSair = new util.rsbuttom.MenuButton();
+        MenuButtonInicio = new util.buttoms.MenuButton();
+        MenuButtonVenda = new util.buttoms.MenuButton();
+        MenuButtonProduto = new util.buttoms.MenuButton();
+        MenuButtonSair = new util.buttoms.MenuButton();
         pnPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,7 +144,7 @@ public class frmPrincipalVIEW extends javax.swing.JFrame {
         MenuButtonSair.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         MenuButtonSair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MenuButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MenuButtonSair.setIconTextGap(25);
+        MenuButtonSair.setIconTextGap(10);
         MenuButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonSairActionPerformed(evt);
@@ -315,10 +315,10 @@ public class frmPrincipalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private util.rsbuttom.MenuButton MenuButtonInicio;
-    private util.rsbuttom.MenuButton MenuButtonProduto;
-    private util.rsbuttom.MenuButton MenuButtonSair;
-    private util.rsbuttom.MenuButton MenuButtonVenda;
+    private util.buttoms.MenuButton MenuButtonInicio;
+    private util.buttoms.MenuButton MenuButtonProduto;
+    private util.buttoms.MenuButton MenuButtonSair;
+    private util.buttoms.MenuButton MenuButtonVenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

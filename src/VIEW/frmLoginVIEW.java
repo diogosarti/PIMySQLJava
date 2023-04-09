@@ -142,6 +142,7 @@ public class frmLoginVIEW extends javax.swing.JFrame {
             if (rsUserDao.next()) {
                 //chamar tela
                 frmPrincipalVIEW frmPrincipalView = new frmPrincipalVIEW();
+                frmPrincipalView.setLocationRelativeTo(null);
                 frmPrincipalView.setVisible(true);
                 dispose();
             } else {

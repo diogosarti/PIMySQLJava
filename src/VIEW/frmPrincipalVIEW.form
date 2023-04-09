@@ -155,7 +155,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="util.rsbuttom.MenuButton" name="MenuButtonInicio">
+            <Component class="util.buttoms.MenuButton" name="MenuButtonInicio">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/home_1.png"/>
@@ -192,7 +192,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuButtonInicioActionPerformed"/>
               </Events>
             </Component>
-            <Component class="util.rsbuttom.MenuButton" name="MenuButtonVenda">
+            <Component class="util.buttoms.MenuButton" name="MenuButtonVenda">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/sale.png"/>
@@ -226,7 +226,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuButtonVendaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="util.rsbuttom.MenuButton" name="MenuButtonProduto">
+            <Component class="util.buttoms.MenuButton" name="MenuButtonProduto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/product.png"/>
@@ -260,7 +260,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuButtonProdutoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="util.rsbuttom.MenuButton" name="MenuButtonSair">
+            <Component class="util.buttoms.MenuButton" name="MenuButtonSair">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="13" green="8" red="c7" type="rgb"/>
@@ -281,7 +281,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="25"/>
+                <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuButtonSairActionPerformed"/>
