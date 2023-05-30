@@ -75,12 +75,6 @@ public class ProdutoDAO {
 
             int rowsAffected = pstm.executeUpdate();
             pstm.close();
-
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "Estoque atualizado com sucesso");
-            } else {
-                JOptionPane.showMessageDialog(null, "Nenhum estoque foi atualizado");
-            }
         } catch (SQLException e) {
             throw new SQLException("Erro ao atualizar o estoque: " + e.getMessage());
         }

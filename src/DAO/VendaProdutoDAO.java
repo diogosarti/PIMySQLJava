@@ -22,11 +22,6 @@ public class VendaProdutoDAO {
             pstm.setDouble(4, vendaProduto.getPrecoUnitario());
 
             int rowsAffected = pstm.executeUpdate();
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "Venda de produto cadastrada com sucesso");
-            } else {
-                JOptionPane.showMessageDialog(null, "Nenhuma venda de produto foi cadastrada");
-            }
             pstm.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
