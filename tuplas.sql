@@ -1,52 +1,21 @@
-INSERT INTO produto (nome_produto, preco_produto, qtdeEstoque_produto) 
-VALUES 
-  ('produto1', 9.99, 100),
-  ('produto2', 19.99, 50),
-  ('produto3', 5.99, 200),
-  ('produto4', 14.99, 75),
-  ('produto5', 29.99, 25),
-  ('produto6', 8.50, 150),
-  ('produto7', 11.99, 100),
-  ('produto8', 3.99, 300),
-  ('produto9', 17.50, 50),
-  ('produto10', 24.99, 20),
-  ('produto11', 6.99, 250),
-  ('produto12', 12.99, 80),
-  ('produto13', 9.50, 150),
-  ('produto14', 18.99, 30),
-  ('produto15', 21.99, 10),
-  ('produto16', 7.50, 200),
-  ('produto17', 13.99, 70),
-  ('produto18', 4.99, 500),
-  ('produto19', 10.50, 75),
-  ('produto20', 27.99, 15),
-  ('produto21', 8.99, 180),
-  ('produto22', 16.99, 40),
-  ('produto23', 11.50, 120),
-  ('produto24', 22.99, 25),
-  ('produto25', 19.99, 50),
-  ('produto26', 5.99, 200),
-  ('produto27', 14.99, 75),
-  ('produto28', 29.99, 25),
-  ('produto29', 8.50, 150),
-  ('produto30', 11.99, 100),
-  ('produto31', 3.99, 300),
-  ('produto32', 17.50, 50),
-  ('produto33', 24.99, 20),
-  ('produto34', 6.99, 250),
-  ('produto35', 12.99, 80),
-  ('produto36', 9.50, 150),
-  ('produto37', 18.99, 30),
-  ('produto38', 21.99, 10),
-  ('produto39', 7.50, 200),
-  ('produto40', 13.99, 70),
-  ('produto41', 4.99, 500),
-  ('produto42', 10.50, 75),
-  ('produto43', 27.99, 15),
-  ('produto44', 8.99, 180),
-  ('produto45', 16.99, 40),
-  ('produto46', 11.50, 120),
-  ('produto47', 22.99, 25),
-  ('produto48', 19.99, 50),
-  ('produto49', 5.99, 200),
-  ('produto50', 14.99, 75);
+use dbmyshop;
+
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Smartphone Samsung Galaxy S21', 5000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Smartphone Apple iPhone 13', 6000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Smartphone Xiaomi Mi 11', 4000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Notebook Dell Inspiron', 5000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Notebook Lenovo IdeaPad', 4500.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Notebook HP Pavilion', 4000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Tablet Samsung Galaxy Tab S7', 4000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Tablet Apple iPad Air', 5000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Smartwatch Samsung Galaxy Watch4', 2000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Smartwatch Apple Watch Series 7', 3000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Fone de ouvido sem fio Samsung Galaxy Buds2', 800.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Fone de ouvido sem fio Apple AirPods Pro', 1200.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Monitor Dell UltraSharp', 2000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Monitor LG UltraGear', 2500.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Teclado mecânico HyperX Alloy FPS Pro', 500.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Mouse gamer Logitech G502 HERO', 300.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Headset gamer HyperX Cloud II', 600.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Placa de vídeo NVIDIA GeForce RTX 3080', 10000.0, 50);
+INSERT INTO produto(nome_produto, preco_produto, qtdeEstoque_produto) VALUES('Processador AMD Ryzen 9 5900X', 4000.0, 50);

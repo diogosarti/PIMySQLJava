@@ -1,8 +1,17 @@
 package VIEW.Paineis;
 
 import DAO.ProdutoDAO;
+import DAO.VendaDAO;
+import DAO.VendaProdutoDAO;
 import DTO.ProdutoDTO;
+import DTO.VendaDTO;
+import DTO.VendaProdutoDTO;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +38,10 @@ public class painelVenda extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnDelete = new util.buttoms.MenuButton();
+        btnFinalizar = new util.buttoms.MenuButton();
+        lblTotal = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblPreco = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -58,10 +71,7 @@ public class painelVenda extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Preço", "Qtde", "Total"
@@ -109,6 +119,23 @@ public class painelVenda extends javax.swing.JPanel {
         }
     });
 
+    btnFinalizar.setText("Finalizar compra");
+    btnFinalizar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+    btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnFinalizarActionPerformed(evt);
+        }
+    });
+
+    lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+    lblTotal.setText("Total:");
+
+    jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+    jLabel1.setText("R$");
+
+    lblPreco.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+    lblPreco.setText("0,00");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
@@ -116,17 +143,34 @@ public class painelVenda extends javax.swing.JPanel {
         .addGroup(layout.createSequentialGroup()
             .addGap(63, 63, 63)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblCarrinho)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(lblCarrinho)
+                    .addContainerGap(821, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTotal)
+                            .addGap(88, 88, 88))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(cbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(cbQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(137, 137, 137)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(60, Short.MAX_VALUE))
+                    .addGap(18, 18, 18)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(378, 378, 378))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,12 +180,23 @@ public class painelVenda extends javax.swing.JPanel {
                 .addComponent(cbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(cbQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(lblCarrinho)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(lblTotal)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(lblPreco))))
+            .addGap(27, 27, 27)
+            .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(41, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,12 +216,21 @@ public class painelVenda extends javax.swing.JPanel {
         // Atualizar a JComboBox da quantidade
         if (produtoSelecionado != null) {
             int qtdeEstoque = produtoSelecionado.getQtdeEstoqueProduto();
+
+            // Calcular a quantidade de estoque restante subtraindo a quantidade de itens do produto já adicionados ao carrinho
+            for (Item item : itemList) {
+                if (item.getNomeProduto().equals(nomeProduto)) {
+                    qtdeEstoque -= item.getQuantidade();
+                }
+            }
+
             cbQtde.removeAllItems();
             for (int i = 1; i <= qtdeEstoque; i++) {
                 cbQtde.addItem(String.valueOf(i));
             }
         }
     }//GEN-LAST:event_cbProdutoActionPerformed
+
     class Item {
 
         private String nomeProduto;
@@ -228,6 +292,56 @@ public class painelVenda extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private double calcularValorTotal() {
+        double valorTotal = 0.0;
+
+        for (Item item : itemList) {
+            valorTotal += item.getTotal();
+        }
+
+        return valorTotal;
+    }
+
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        if (itemList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhum produto foi adicionado ao carrinho");
+            return;
+        }
+
+        // Criar uma nova venda
+        VendaDAO vendaDAO = new VendaDAO();
+        VendaDTO venda = new VendaDTO();
+        venda.setDataVenda(new Date());
+        venda.setValorTotal(calcularValorTotal());
+        vendaDAO.cadastrarVenda(venda);
+
+        // Adicionar os itens da lista de itens como vendas de produtos
+        VendaProdutoDAO vendaProdutoDAO = new VendaProdutoDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        for (Item item : itemList) {
+            ProdutoDTO produto = produtoDAO.pesquisarProdutoPorNome(item.getNomeProduto());
+
+            VendaProdutoDTO vendaProduto = new VendaProdutoDTO();
+            vendaProduto.setIdProduto(produto.getIdPruduto());
+            vendaProduto.setIdVenda(venda.getIdVenda());
+            vendaProduto.setQuantidade(item.getQuantidade());
+            vendaProduto.setPrecoUnitario(item.getPreco());
+            vendaProdutoDAO.cadastrarVendaProduto(vendaProduto);
+
+            try {
+                // Atualizar a quantidade de estoque do produto
+                produtoDAO.atualizarEstoque(produto.getIdPruduto(), item.getQuantidade());
+            } catch (SQLException ex) {
+                Logger.getLogger(painelVenda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        // Limpar a lista de itens e atualizar a tabela
+        itemList.clear();
+        updateTable();
+    }
+
     private void updateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
@@ -240,15 +354,24 @@ public class painelVenda extends javax.swing.JPanel {
             rowData[3] = item.getTotal();
             model.addRow(rowData);
         }
-    }
+
+        // Atualizar o texto do lblPreco com o valor total da compra
+        lblPreco.setText(String.format("%.2f", calcularValorTotal()));
+
+    }//GEN-LAST:event_btnFinalizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private util.buttoms.MenuButton btnAdd;
     private util.buttoms.MenuButton btnDelete;
+    private util.buttoms.MenuButton btnFinalizar;
     private javax.swing.JComboBox<String> cbProduto;
     private javax.swing.JComboBox<String> cbQtde;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCarrinho;
+    private javax.swing.JLabel lblPreco;
+    private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
 }

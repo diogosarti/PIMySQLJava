@@ -4,14 +4,12 @@ import DAO.ProdutoDAO;
 import DTO.ProdutoDTO;
 import VIEW.frmAlterarProduto;
 import VIEW.frmCadastrarPorduto;
-import javax.swing.border.EmptyBorder;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import util.buttoms.ActionButton;
-import util.buttoms.PanelAction;
-import util.buttoms.TableActionCellRender;
 
 public class painelProduto extends javax.swing.JPanel {
 
@@ -89,7 +87,7 @@ public class painelProduto extends javax.swing.JPanel {
             tabelaProdutos.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 87, 970, 501));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 87, 970, 480));
 
         btnRemoveProduct.setBackground(new java.awt.Color(204, 0, 0));
         btnRemoveProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete_1.png"))); // NOI18N

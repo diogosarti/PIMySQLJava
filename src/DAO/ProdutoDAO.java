@@ -64,6 +64,28 @@ public class ProdutoDAO {
         return produtoLista;
     }
 
+    public void atualizarEstoque(int idProduto, int quantidade) throws SQLException {
+        String sql = "UPDATE produto SET qtdeEstoque_produto = qtdeEstoque_produto - ? WHERE id_produto = ?";
+        conn = new ConexaoDAO().conectaDB();
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, quantidade);
+            pstm.setInt(2, idProduto);
+
+            int rowsAffected = pstm.executeUpdate();
+            pstm.close();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Estoque atualizado com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhum estoque foi atualizado");
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao atualizar o estoque: " + e.getMessage());
+        }
+    }
+
     public ProdutoDTO obterProdutoPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE id_produto = ?";
         conn = new ConexaoDAO().conectaDB();
