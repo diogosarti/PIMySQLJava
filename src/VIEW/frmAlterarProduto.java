@@ -43,8 +43,8 @@ public class frmAlterarProduto extends javax.swing.JFrame {
 
         lblCadastrarProduto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblCadastrarProduto.setForeground(new java.awt.Color(51, 51, 51));
-        lblCadastrarProduto.setText("Cadastrar Produto");
-        jPanel1.add(lblCadastrarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 200, 40));
+        lblCadastrarProduto.setText("Editar Produto");
+        jPanel1.add(lblCadastrarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 200, 40));
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNome.setText("Nome produto:");
@@ -60,7 +60,7 @@ public class frmAlterarProduto extends javax.swing.JFrame {
         lblQtdeEstoque.setText("Qtde. Estoque");
         jPanel1.add(lblQtdeEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 130, 30));
 
-        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setText("Salvar alterações");
         btnAdicionar.setColorHover(new java.awt.Color(0, 153, 51));
         btnAdicionar.setColorNormal(new java.awt.Color(0, 204, 51));
         btnAdicionar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N

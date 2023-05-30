@@ -1,5 +1,6 @@
 package VIEW;
 
+import DAO.InitDatabaseDAO;
 import DAO.UserDAO;
 import DTO.UserDTO;
 import java.awt.event.KeyEvent;
@@ -11,10 +12,11 @@ import util.Util;
 public class frmLoginVIEW extends javax.swing.JFrame {
 
     public frmLoginVIEW() {
+        InitDatabaseDAO.init();
         initComponents();
-    }
 
-    @SuppressWarnings("unchecked")
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -183,9 +185,6 @@ public class frmLoginVIEW extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -1,8 +1,13 @@
 package VIEW.Paineis;
 
+import DAO.ProdutoDAO;
+import DTO.ProdutoDTO;
+import java.util.ArrayList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 public class painelVenda extends javax.swing.JPanel {
-
 
     public painelVenda() {
         initComponents();
@@ -17,32 +22,233 @@ public class painelVenda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        cbProduto = new javax.swing.JComboBox<>();
+        cbQtde = new javax.swing.JComboBox<>();
+        btnAdd = new util.buttoms.MenuButton();
+        lblCarrinho = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnDelete = new util.buttoms.MenuButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("Teste2");
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        ArrayList<ProdutoDTO> produtos = produtoDAO.pesquisarProduto();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(291, 291, 291)
-                .addComponent(jLabel1)
-                .addContainerGap(715, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(527, Short.MAX_VALUE))
-        );
+        for (ProdutoDTO produto : produtos) {
+            cbProduto.addItem(produto.getNomeProduto());
+        }
+        cbProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbProdutoActionPerformed(evt);
+            }
+        });
+
+        cbQtde.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+
+        btnAdd.setText("Adicionar");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        lblCarrinho.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblCarrinho.setText("Carrinho:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Preço", "Qtde", "Total"
+            }
+        ){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        }
+    );
+    jTable1.setRowHeight(40);
+
+    jScrollPane1.setViewportView(jTable1);
+
+    if (jTable1.getColumnModel().getColumnCount() > 0) {
+        jTable1.getColumnModel().getColumn(0).setResizable(false);
+        jTable1.getColumnModel().getColumn(1).setResizable(false);
+        jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jTable1.getColumnModel().getColumn(3).setResizable(false);
+    }
+
+    jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow != -1) {
+                btnDelete.setEnabled(true);
+            } else {
+                btnDelete.setEnabled(false);
+            }
+        }
+    });
+    jScrollPane1.setViewportView(jTable1);
+
+    btnDelete.setText("Excluir");
+    btnDelete.setMaximumSize(new java.awt.Dimension(64, 17));
+    btnDelete.setMinimumSize(new java.awt.Dimension(64, 17));
+    btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnDeleteActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    this.setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(63, 63, 63)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblCarrinho)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(cbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(cbQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(137, 137, 137)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(60, Short.MAX_VALUE))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(13, 13, 13)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(cbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(lblCarrinho)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(115, Short.MAX_VALUE))
+    );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProdutoActionPerformed
+        // Obter o produto selecionado
+        String nomeProduto = (String) cbProduto.getSelectedItem();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        ArrayList<ProdutoDTO> produtos = produtoDAO.pesquisarProduto();
+        ProdutoDTO produtoSelecionado = null;
+        for (ProdutoDTO produto : produtos) {
+            if (produto.getNomeProduto().equals(nomeProduto)) {
+                produtoSelecionado = produto;
+                break;
+            }
+        }
+
+        // Atualizar a JComboBox da quantidade
+        if (produtoSelecionado != null) {
+            int qtdeEstoque = produtoSelecionado.getQtdeEstoqueProduto();
+            cbQtde.removeAllItems();
+            for (int i = 1; i <= qtdeEstoque; i++) {
+                cbQtde.addItem(String.valueOf(i));
+            }
+        }
+    }//GEN-LAST:event_cbProdutoActionPerformed
+    class Item {
+
+        private String nomeProduto;
+        private double preco;
+        private int quantidade;
+        private double total;
+
+        public Item(String nomeProduto, double preco, int quantidade) {
+            this.nomeProduto = nomeProduto;
+            this.preco = preco;
+            this.quantidade = quantidade;
+            this.total = preco * quantidade;
+        }
+
+        public String getNomeProduto() {
+            return nomeProduto;
+        }
+
+        public double getPreco() {
+            return preco;
+        }
+
+        public int getQuantidade() {
+            return quantidade;
+        }
+
+        public double getTotal() {
+            return total;
+        }
+    }
+
+    ArrayList<Item> itemList = new ArrayList<>();
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+// Obter os valores selecionados nas JComboBoxes
+        String nomeProduto = (String) cbProduto.getSelectedItem();
+        int quantidade = Integer.parseInt((String) cbQtde.getSelectedItem());
+
+        // Obter o preço do produto selecionado
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        ProdutoDTO produto = produtoDAO.pesquisarProdutoPorNome(nomeProduto);
+        double preco = produto.getPrecoProduto();
+
+        // Criar um novo objeto Item com esses valores
+        Item item = new Item(nomeProduto, preco, quantidade);
+
+        // Adicionar o objeto à lista de itens
+        itemList.add(item);
+
+        // Atualizar a tabela para exibir os novos dados
+        updateTable();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            itemList.remove(selectedRow);
+            updateTable();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void updateTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        for (Item item : itemList) {
+            Object[] rowData = new Object[4];
+            rowData[0] = item.getNomeProduto();
+            rowData[1] = item.getPreco();
+            rowData[2] = item.getQuantidade();
+            rowData[3] = item.getTotal();
+            model.addRow(rowData);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private util.buttoms.MenuButton btnAdd;
+    private util.buttoms.MenuButton btnDelete;
+    private javax.swing.JComboBox<String> cbProduto;
+    private javax.swing.JComboBox<String> cbQtde;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCarrinho;
     // End of variables declaration//GEN-END:variables
 }

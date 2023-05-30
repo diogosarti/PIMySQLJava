@@ -1,7 +1,7 @@
 package DTO;
 
 public class ProdutoDTO {
-    private int idPruduto,qtdeEstoqueProduto, idFornecedorProduto;
+    private int idPruduto,quantidadeProduto, idFornecedorProduto;
     private String nomeProduto;
     private double precoProduto;
 
@@ -9,7 +9,7 @@ public class ProdutoDTO {
     }
 
     public ProdutoDTO(String nomeProduto, double precoProduto, int qtdeEstoqueProduto) {
-        this.qtdeEstoqueProduto = qtdeEstoqueProduto;
+        this.quantidadeProduto = qtdeEstoqueProduto;
         this.nomeProduto = nomeProduto;
         this.precoProduto = precoProduto;
     }
@@ -23,11 +23,11 @@ public class ProdutoDTO {
     }
 
     public int getQtdeEstoqueProduto() {
-        return qtdeEstoqueProduto;
+        return quantidadeProduto;
     }
 
     public void setQtdeEstoqueProduto(int qtdeEstoqueProduto) {
-        this.qtdeEstoqueProduto = qtdeEstoqueProduto;
+        this.quantidadeProduto = qtdeEstoqueProduto;
     }
 
     public int getIdFornecedorProduto() {
