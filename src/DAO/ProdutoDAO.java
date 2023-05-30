@@ -205,4 +205,42 @@ public class ProdutoDAO {
         }
     }
 
+    public int obterNumeroTotalDeProdutosEmEstoque() {
+        String sql = "SELECT SUM(qtdeEstoque_produto) FROM produto";
+        conn = new ConexaoDAO().conectaDB();
+        int totalEstoque = 0;
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                totalEstoque = rs.getInt(1);
+            }
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalEstoque;
+    }
+
+    public int obterNumeroTotalDeProdutos() {
+        String sql = "SELECT COUNT(*) FROM produto";
+        conn = new ConexaoDAO().conectaDB();
+        int totalProdutos = 0;
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                totalProdutos = rs.getInt(1);
+            }
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalProdutos;
+    }
+
 }

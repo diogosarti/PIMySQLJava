@@ -9,6 +9,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class VendaDAO {
+
     Connection conn;
     PreparedStatement pstm;
 
@@ -35,5 +36,43 @@ public class VendaDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+
+    public int obterNumeroTotalDeVendas() {
+        String sql = "SELECT COUNT(*) FROM venda";
+        conn = new ConexaoDAO().conectaDB();
+        int totalVendas = 0;
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                totalVendas = rs.getInt(1);
+            }
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalVendas;
+    }
+
+    public double obterValorTotalArrecadado() {
+        String sql = "SELECT SUM(valor_total) FROM venda";
+        conn = new ConexaoDAO().conectaDB();
+        double totalArrecadado = 0.0;
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                totalArrecadado = rs.getDouble(1);
+            }
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalArrecadado;
     }
 }

@@ -1,11 +1,13 @@
 package VIEW.Paineis;
 
+import DAO.ProdutoDAO;
+import DAO.VendaDAO;
 
 public class painelInicio extends javax.swing.JPanel {
 
-
     public painelInicio() {
         initComponents();
+        updateLabels();
     }
 
     /**
@@ -17,32 +19,225 @@ public class painelInicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        panelTotalVendas = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblTotalVendas = new javax.swing.JLabel();
+        panelTotalEstoque = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        lblTotalEstoque = new javax.swing.JLabel();
+        panelTotalProdutos = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        lblTotalProdutos = new javax.swing.JLabel();
+        panelTotalArrecadado = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        lblTotalArrecadado = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("Teste");
+        panelTotalVendas.setBackground(new java.awt.Color(0, 102, 153));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Total de vendas");
+
+        lblTotalVendas.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTotalVendas.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalVendas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalVendas.setText("0");
+
+        javax.swing.GroupLayout panelTotalVendasLayout = new javax.swing.GroupLayout(panelTotalVendas);
+        panelTotalVendas.setLayout(panelTotalVendasLayout);
+        panelTotalVendasLayout.setHorizontalGroup(
+            panelTotalVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalVendasLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelTotalVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTotalVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        panelTotalVendasLayout.setVerticalGroup(
+            panelTotalVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalVendasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelTotalEstoque.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Total em estoque");
+
+        lblTotalEstoque.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTotalEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalEstoque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalEstoque.setText("0");
+
+        javax.swing.GroupLayout panelTotalEstoqueLayout = new javax.swing.GroupLayout(panelTotalEstoque);
+        panelTotalEstoque.setLayout(panelTotalEstoqueLayout);
+        panelTotalEstoqueLayout.setHorizontalGroup(
+            panelTotalEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalEstoqueLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(panelTotalEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        panelTotalEstoqueLayout.setVerticalGroup(
+            panelTotalEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalEstoqueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(lblTotalEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        panelTotalProdutos.setBackground(new java.awt.Color(204, 204, 0));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Total de Produtos");
+
+        lblTotalProdutos.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTotalProdutos.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalProdutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalProdutos.setText("0");
+
+        javax.swing.GroupLayout panelTotalProdutosLayout = new javax.swing.GroupLayout(panelTotalProdutos);
+        panelTotalProdutos.setLayout(panelTotalProdutosLayout);
+        panelTotalProdutosLayout.setHorizontalGroup(
+            panelTotalProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTotalProdutosLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(panelTotalProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
+        );
+        panelTotalProdutosLayout.setVerticalGroup(
+            panelTotalProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalProdutosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTotalProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelTotalArrecadado.setBackground(new java.awt.Color(0, 153, 51));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Total Arrecadado");
+
+        lblTotalArrecadado.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblTotalArrecadado.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalArrecadado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTotalArrecadado.setText("0,00");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("R$");
+
+        javax.swing.GroupLayout panelTotalArrecadadoLayout = new javax.swing.GroupLayout(panelTotalArrecadado);
+        panelTotalArrecadado.setLayout(panelTotalArrecadadoLayout);
+        panelTotalArrecadadoLayout.setHorizontalGroup(
+            panelTotalArrecadadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTotalArrecadadoLayout.createSequentialGroup()
+                .addGroup(panelTotalArrecadadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTotalArrecadadoLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTotalArrecadado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelTotalArrecadadoLayout.createSequentialGroup()
+                        .addContainerGap(29, Short.MAX_VALUE)
+                        .addComponent(jLabel8)))
+                .addGap(22, 22, 22))
+        );
+        panelTotalArrecadadoLayout.setVerticalGroup(
+            panelTotalArrecadadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalArrecadadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelTotalArrecadadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalArrecadado))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(291, 291, 291)
-                .addComponent(jLabel1)
-                .addContainerGap(721, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addComponent(panelTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelTotalEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelTotalProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelTotalArrecadado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(527, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelTotalProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTotalEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTotalVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTotalArrecadado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void updateLabels() {
+        // Consultar o banco de dados para obter o número total de vendas
+        VendaDAO vendaDAO = new VendaDAO();
+        int totalVendas = vendaDAO.obterNumeroTotalDeVendas();
+        lblTotalVendas.setText(String.valueOf(totalVendas));
+
+        // Consultar o banco de dados para obter o número total de produtos em estoque
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        int totalEstoque = produtoDAO.obterNumeroTotalDeProdutosEmEstoque();
+        lblTotalEstoque.setText(String.valueOf(totalEstoque));
+
+        // Consultar o banco de dados para obter o número total de produtos
+        int totalProdutos = produtoDAO.obterNumeroTotalDeProdutos();
+        lblTotalProdutos.setText(String.valueOf(totalProdutos));
+
+        // Consultar o banco de dados para obter o valor total arrecadado
+        double totalArrecadado = vendaDAO.obterValorTotalArrecadado();
+        lblTotalArrecadado.setText(String.format("%.2f", totalArrecadado));
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblTotalArrecadado;
+    private javax.swing.JLabel lblTotalEstoque;
+    private javax.swing.JLabel lblTotalProdutos;
+    private javax.swing.JLabel lblTotalVendas;
+    private javax.swing.JPanel panelTotalArrecadado;
+    private javax.swing.JPanel panelTotalEstoque;
+    private javax.swing.JPanel panelTotalProdutos;
+    private javax.swing.JPanel panelTotalVendas;
     // End of variables declaration//GEN-END:variables
 }
